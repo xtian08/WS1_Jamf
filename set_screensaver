@@ -1,27 +1,30 @@
 #!/bin/bash
-# Created by Chris Mariano GIT:xdamn
+# Author by Chris Mariano GIT:xdamn
 
+#.Notes
+#1 Script is designed to fetch the slideshows files from object storage and mine is fetching from github
+#2 Please refer to https://github.com/itjimbo/macOS-Screen-Saver-and-Wallpaper on your prefered script to activate screensaver on OSX14+ #update macOS14act variables
 
 #Variables
-SSVersion="SSaverVer-08082024-01" 
-photoloc="/Users/Shared/SSaver" #Set location of slideshow images
-repo="xdamn/WS1_Jamf" #Your github repository to download images on local machine
+SSVersion="SSaverVer-08082024-01" marker filename
+photoloc="/Users/Shared/SSaver" #Set local path of slideshow images 
+repo="xdamn/WS1_Jamf" #Your github repository where slideshow files folder
 folder="images" #github repo folder containing images to be downloaded
 macOS14act="https://github.com/xdamn/WS1_Jamf/raw/refs/heads/main/Set_Classic_SScreen_OSX14+.sh" #Set location of script to activate on OSX 14+
 
+#MAIN
 scr_paths=(
     "/System/Library/Frameworks/ScreenSaver.framework/Resources/iLifeSlideshows.saver" #OSX 10-11
     "/System/Library/Frameworks/ScreenSaver.framework/PlugIns/iLifeSlideshows.appex" #OSX 12-13
     "/System/Library/ExtensionKit/Extensions/iLifeSlideshows.appex" #OSX14+
 )
 
-# Check if SSaver is current
+# Check if SSaver marker is current
 if [ -e "/Users/Shared/$SSVersion" ]; then
     echo "SSaver is current."
-    sudo bash -c "$(curl -fsSL $macOS14act)"
     exit 0
 else
-    # Delete markers
+    # Delete marker 
     echo "Deleting files old SSaverVer-* files..."
     sudo rm -f /Users/Shared/SSaverVer*
 

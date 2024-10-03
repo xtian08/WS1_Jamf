@@ -6,7 +6,7 @@
 SSVersion="SSaverVer-08082024-01" 
 photoloc="/Users/Shared/SSaver" #Set location of slideshow images
 repo="xdamn/WS1_Jamf" #Your github repository to download images on local machine
-folder="SSaver" #folder containing images to be downloaded
+folder="images" #github repo folder containing images to be downloaded
 macOS14act="https://github.com/xdamn/WS1_Jamf/raw/refs/heads/main/Set_Classic_SScreen_OSX14+.sh" #Set location of script to activate on OSX 14+
 
 scr_paths=(

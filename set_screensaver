@@ -7,7 +7,7 @@ SSVersion="SSaverVer-08082024-01"
 photoloc="/Users/Shared/SSaver" #Set location of slideshow images
 repo="xdamn/WS1_Jamf" #Your github repository to download images on local machine
 folder="SSaver" #folder containing images to be downloaded
-macOS14SS="https://raw.githubusercontent.com/xdamn/WS1/master"
+macOS14act="https://github.com/xdamn/WS1_Jamf/raw/refs/heads/main/Set_Classic_SScreen_OSX14+.sh" #Set location of script to activate on OSX 14+
 
 scr_paths=(
     "/System/Library/Frameworks/ScreenSaver.framework/Resources/iLifeSlideshows.saver" #OSX 10-11
@@ -18,7 +18,7 @@ scr_paths=(
 # Check if SSaver is current
 if [ -e "/Users/Shared/$SSVersion" ]; then
     echo "SSaver is current."
-    sudo bash -c "$(curl -fsSL $macOS14SS)"
+    sudo bash -c "$(curl -fsSL $macOS14act)"
     exit 0
 else
     # Delete markers
@@ -79,7 +79,7 @@ sudo -u "$current_user" defaults -currentHost delete com.apple.ScreenSaverPhotoC
 sudo -u "$current_user" defaults -currentHost delete com.apple.ScreenSaver.iLifeSlideShows > /dev/null 2>&1
 
 # Check SS
-sudo bash -c "$(curl -fsSL $macOS14SS)"
+sudo bash -c "$(curl -fsSL $macOS14act)"
 
 # Apply new SS config
 apply_screensaver_settings "$current_user"
